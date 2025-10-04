@@ -10,7 +10,7 @@ Check out the live site here: [CineFind on GitHub Pages](# 🎬 CineFind: Modern
 
 CineFind is a modern, responsive web application for discovering movies, trending films, and web series. It features a sleek design, dark mode toggle, search functionality, and filters for language and year.  
 
-Check out the live site here: [CineFind on GitHub Pages](https://vipulkhatak0.io/cinefind/)
+Check out the live site here: [CineFind on GitHub Pages](https://vipulkhatak0.github.io/cinefind/)
 
 
 
