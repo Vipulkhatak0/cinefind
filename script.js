@@ -56,11 +56,11 @@ document.addEventListener('DOMContentLoaded', () => {
             link: "https://hdmovie2.ooo/78705-idli-kadai.html" 
         },
         { 
-            title: "Web Series Pilot", 
-            year: 2024, 
+            title: "kantara", 
+            year: 2025, 
             rating: 9.5, 
-            poster: "movie4.jpg", 
-            link: "https://www.youtube.com/watch?v=EXAMPLE_WEB1" 
+            poster: "kantara.jpg", 
+            link: "https://bollyflix.esq/kantara-a-legend-chapter-1-2025-hindi-movie/" 
         },
         { 
             title: "Last Stand", 
