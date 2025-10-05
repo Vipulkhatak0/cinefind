@@ -5,21 +5,21 @@
     --bg-secondary: #f5f5f5;
     --text-primary: #1e1e1e;
     --text-secondary: #555;
-    --accent-color: #E50914; 
+    --accent-color: #E50914; /* Red Accent */
     --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-
+/* Dark Mode Overrides */
 .dark-mode {
     --bg-primary: #121212;
     --bg-secondary: #1e1e1e;
     --text-primary: #f5f5f5;
     --text-secondary: #aaaaaa;
-    --accent-color: #ff454d; 
+    --accent-color: #ff454d; /* Slightly brighter red for dark mode contrast */
     --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
-
+/* --- 1. GLOBAL STYLES --- */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -45,7 +45,7 @@ a {
     text-decoration: none;
 }
 
-
+/* --- 2. HEADER & NAVIGATION --- */
 .main-header {
     display: flex;
     justify-content: space-between;
@@ -89,7 +89,7 @@ a {
     color: var(--accent-color);
 }
 
-
+/* --- 3. SEARCH & FILTERS --- */
 .search-filter-section {
     display: flex;
     flex-wrap: wrap;
@@ -135,7 +135,7 @@ a {
     font-size: 1rem;
 }
 
-
+/* --- 4. CATEGORIES BAR --- */
 .categories-bar {
     display: flex;
     flex-wrap: wrap;
@@ -160,7 +160,7 @@ a {
     border-color: var(--accent-color);
 }
 
-
+/* --- 5. MOVIE GRID & CARDS --- */
 .content-section {
     padding-bottom: 40px;
 }
@@ -173,7 +173,7 @@ a {
 
 .movie-grid {
     display: grid;
-   
+    /* Default: 2 columns on small screens */
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 20px;
 }
@@ -195,7 +195,7 @@ a {
 .card-poster {
     position: relative;
     width: 100%;
-    
+    /* Aspect Ratio for movie posters (approx 2:3) */
     padding-bottom: 150%; 
     overflow: hidden;
 }
@@ -253,10 +253,10 @@ a {
 }
 
 .direct-link-btn:hover {
-    background-color: #c90810; 
+    background-color: #c90810; /* Darker red on hover */
 }
 
-
+/* --- 6. FOOTER --- */
 footer {
     text-align: center;
     padding: 20px;
@@ -265,7 +265,8 @@ footer {
     color: var(--text-secondary);
 }
 
-
+/* --- 7. MEDIA QUERIES (RESPONSIVENESS) --- */
+/* Tablet (approx 768px) */
 @media (min-width: 768px) {
     .movie-grid {
         grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
@@ -279,20 +280,23 @@ footer {
     }
 }
 
-
+/* Desktop (approx 1024px) */
 @media (min-width: 1024px) {
     .movie-grid {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
     .main-nav {
-        display: flex;
+        display: flex; /* Show full nav links on desktop */
+    }
+}
 
+/* Mobile (Less than 768px) */
 @media (max-width: 767px) {
     .main-header {
         padding: 10px 15px;
     }
     .main-nav {
-        display: none; 
+        display: none; /* Hide main links on mobile, use categories bar */
     }
     .search-filter-section {
         flex-direction: column;
@@ -313,7 +317,7 @@ footer {
         margin-right: 10px;
     }
     .movie-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr); /* Two columns on mobile */
         gap: 15px;
     }
     .section-title {
