@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 CineFind: Modern Movie Discovery</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo">
+            <i class="fas fa-clapperboard"></i>
+            <span>CineFind</span>
+        </div>
+        <nav class="main-nav">
+            <a href="#latest">Latest</a>
+            <a href="#trending">Trending</a>
+            <a href="#webseries">Web Series</a>
+        </nav>
+        <div class="header-actions">
+            <button id="darkModeToggle" aria-label="Toggle Dark Mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+    
+    <main class="container">
+
+        <section class="search-filter-section">
+            <div class="search-bar">
+                <input type="text" id="movie-search" placeholder="Search for movies, series, or actors...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+
+            <div class="filter-group">
+                <select id="language-filter">
+                    <option value="">Language (All)</option>
+                    <option value="english">English</option>
+                    <option value="hindi">Hindi</option>
+                    <option value="spanish">Spanish</option>
+                </select>
+                <select id="year-filter">
+                    <option value="">Year (All)</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="older">Older</option>
+                </select>
+            </div>
+        </section>
+
+        <div class="categories-bar">
+            <a href="#" class="category active">All</a>
+            <a href="#" class="category">Action</a>
+            <a href="#" class="category">Romance</a>
+            <a href="#" class="category">Comedy</a>
+            <a href="#" class="category">Horror</a>
+            <a href="#" class="category">Web Series</a>
+        </div>
+
+        <section id="latest" class="content-section">
+            <h2 class="section-title">✨ Latest Releases</h2>
+            <div class="movie-grid" id="latest-movies-grid">
+                </div>
+        </section>
+
+        <section id="trending" class="content-section">
+            <h2 class="section-title">🔥 Trending Now</h2>
+            <div class="movie-grid" id="all-movies-grid">
+                </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 CineFind. Designed for modern discovery.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
