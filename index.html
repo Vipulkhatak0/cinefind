@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CineFind Ultimate</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="orb1"></div>
+  <div class="orb2"></div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo"><i class="fa-solid fa-film"></i> CineFind</div>
+    <nav>
+      <a class="active" onclick="setTab('home',this)">Home</a>
+      <a onclick="setTab('movies',this)">Movies</a>
+      <a onclick="setTab('series',this)">Series</a>
+      <a onclick="setTab('trending',this)">Trending</a>
+      <a onclick="setTab('watchlist',this)">Watchlist</a>
+    </nav>
+    <div class="header-right">
+      <button class="btn-icon" onclick="setTab('watchlist',null)" title="Watchlist" style="gap:4px;width:auto;padding:0 12px;border-radius:20px;">
+        <i class="fa-solid fa-heart" style="color:var(--red);font-size:13px;"></i>
+        <span class="wl-count" id="wlCount">0</span>
+      </button>
+      <button class="btn-icon" id="themeBtn" onclick="toggleTheme()" title="Toggle theme">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-tag"><i class="fa-solid fa-fire"></i> Now Streaming</div>
+      <h1>Find Your <span>Next Favorite</span> Watch</h1>
+      <p>Thousands of movies &amp; series. Search, filter, save — all in one place.</p>
+      <div class="search-bar">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="searchInput" placeholder="Search by title, genre, cast..." oninput="doSearch()" />
+        <button onclick="doSearch()">Search</button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num">24+</div><div class="stat-label">Titles</div></div>
+        <div class="stat"><div class="stat-num">8</div><div class="stat-label">Genres</div></div>
+        <div class="stat"><div class="stat-num">5</div><div class="stat-label">Languages</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILTERS -->
+  <div class="filters">
+    <div class="cats">
+      <button class="cat active" onclick="setCat('all',this)">All</button>
+      <button class="cat" onclick="setCat('action',this)">Action</button>
+      <button class="cat" onclick="setCat('comedy',this)">Comedy</button>
+      <button class="cat" onclick="setCat('romance',this)">Romance</button>
+      <button class="cat" onclick="setCat('thriller',this)">Thriller</button>
+      <button class="cat" onclick="setCat('drama',this)">Drama</button>
+      <button class="cat" onclick="setCat('scifi',this)">Sci-Fi</button>
+      <button class="cat" onclick="setCat('horror',this)">Horror</button>
+    </div>
+    <div class="drops">
+      <select id="langFilter" onchange="render()">
+        <option value="all">All Languages</option>
+        <option value="english">English</option>
+        <option value="hindi">Hindi</option>
+        <option value="punjabi">Punjabi</option>
+        <option value="korean">Korean</option>
+      </select>
+      <select id="yearFilter" onchange="render()">
+        <option value="all">All Years</option>
+        <option value="2025">2025</option>
+        <option value="2024">2024</option>
+        <option value="2023">2023</option>
+        <option value="2022">2022</option>
+      </select>
+      <select id="ratingFilter" onchange="render()">
+        <option value="all">All Ratings</option>
+        <option value="9">9+ ⭐</option>
+        <option value="8">8+ ⭐</option>
+        <option value="7">7+ ⭐</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab-btn active" id="tab-home"      onclick="setMainTab('home',this)">🏠 Home</button>
+    <button class="tab-btn"        id="tab-movies"    onclick="setMainTab('movies',this)">🎬 Movies</button>
+    <button class="tab-btn"        id="tab-series"    onclick="setMainTab('series',this)">📺 Series</button>
+    <button class="tab-btn"        id="tab-trending"  onclick="setMainTab('trending',this)">🔥 Trending</button>
+    <button class="tab-btn"        id="tab-watchlist" onclick="setMainTab('watchlist',this)">❤️ Watchlist</button>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main class="content" id="mainContent"></main>
+
+  <!-- MODAL -->
+  <div class="modal-bg" id="modalBg" onclick="closeModalBg(event)">
+    <div class="modal" id="modalBox">
+      <div class="modal-thumb" id="modalThumb">
+        <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-title" id="modalTitle"></div>
+        <div class="modal-meta"  id="modalMeta"></div>
+        <div class="modal-desc"  id="modalDesc"></div>
+        <div class="modal-cast"  id="modalCast"></div>
+        <div class="modal-actions">
+        <button class="btn-watch" onclick="watchNow()"><i class="fa-solid fa-play"></i> Watch Now</button>
+         
+          <button class="btn-wl" id="modalWlBtn" onclick="toggleWlModal()">
+            <i class="fa-regular fa-heart"></i>
+            <span id="modalWlText">Add to Watchlist</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 <span>CineFind</span> | Designed by Vipul Kumar</p>
+  </footer>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+
+</body>
+</html>
