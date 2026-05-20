@@ -4,7 +4,7 @@ const ITEMS = [
     id: 1, type: "movie",
     title: "Kantara", year: "2024",
     language: "hindi", category: "action",
-    rating: 9.1, watchLink: "https://www.youtube.com/watch?v=example",
+    rating: 9.1, watchLink: "https://youtu.be/oQu5KACS5_I",
     desc: "A fierce conflict over land and power erupts in a south Indian village where ancient folklore and politics dangerously collide.",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiaWKhRhmsP-Dzqn6KyRVFwdXU9G5h7Sbl9g&s",
     trending: true, cast: "Rishab Shetty, Sapthami Gowda"
@@ -406,14 +406,14 @@ function toggleWlModal() {
 
 // ===== WATCH NOW =====
 // ===== FULL SCREEN ADS =====
+// ===== FULL SCREEN ADS FIXED =====
 function watchNow() {
 
   if (!currentItem) return;
 
-  // Your Ad Link
- const adLink = "https://your-ad-link.com";
+  const adLink = "https://1xbet.com"; // YOUR AD LINK
 
-  // Create Fullscreen Ad
+  // Create Ad Screen
   const adScreen = document.createElement("div");
 
   adScreen.innerHTML = `
@@ -421,9 +421,8 @@ function watchNow() {
     <div id="fullAdScreen">
 
       <iframe 
-        src="${adLink}" 
-        frameborder="0"
-        allowfullscreen>
+        src="${adLink}"
+        frameborder="0">
       </iframe>
 
       <div class="ad-info">
@@ -432,13 +431,14 @@ function watchNow() {
       </div>
 
     </div>
-  
+
   `;
 
   document.body.appendChild(adScreen);
 
-  // Countdown
   let time = 5;
+
+  document.getElementById("adCount").innerText = time;
 
   const counter = setInterval(() => {
 
@@ -450,19 +450,25 @@ function watchNow() {
 
       clearInterval(counter);
 
-      // Remove Ad Screen
+      // Remove Ads
       document.getElementById("fullAdScreen").remove();
 
-      // Open Movie
+      // OPEN MOVIE
       if(currentItem.watchLink){
-        window.open(currentItem.watchLink, "_blank");
-      }else{
-        showToast("No watch link available");
+
+        window.location.href = currentItem.watchLink;
+
+      } else {
+
+        showToast("No movie link found");
+
       }
 
     }
 
   },1000);
+
+
 
 
 }
