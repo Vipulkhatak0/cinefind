@@ -405,14 +405,66 @@ function toggleWlModal() {
 }
 
 // ===== WATCH NOW =====
+// ===== FULL SCREEN ADS =====
 function watchNow() {
+
   if (!currentItem) return;
 
-  if (currentItem.watchLink) {
-    window.open(currentItem.watchLink, "_blank");
-  } else {
-    showToast("No watch link available");
-  }
+  // Your Ad Link
+ const adLink = "https://your-ad-link.com";
+
+  // Create Fullscreen Ad
+  const adScreen = document.createElement("div");
+
+  adScreen.innerHTML = `
+  
+    <div id="fullAdScreen">
+
+      <iframe 
+        src="${adLink}" 
+        frameborder="0"
+        allowfullscreen>
+      </iframe>
+
+      <div class="ad-info">
+        <h2>Advertisement</h2>
+        <p>Movie starts in <span id="adCount">5</span> seconds...</p>
+      </div>
+
+    </div>
+  
+  `;
+
+  document.body.appendChild(adScreen);
+
+  // Countdown
+  let time = 5;
+
+  const counter = setInterval(() => {
+
+    time--;
+
+    document.getElementById("adCount").innerText = time;
+
+    if(time <= 0){
+
+      clearInterval(counter);
+
+      // Remove Ad Screen
+      document.getElementById("fullAdScreen").remove();
+
+      // Open Movie
+      if(currentItem.watchLink){
+        window.open(currentItem.watchLink, "_blank");
+      }else{
+        showToast("No watch link available");
+      }
+
+    }
+
+  },1000);
+
+
 }
 // ===== THEME =====
 function toggleTheme() {
