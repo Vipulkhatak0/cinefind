@@ -767,3 +767,29 @@ transform:scale(1.1);
     font-weight:bold;
     font-size:22px;
 }
+.top-ad,
+.side-ad{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin:20px auto;
+  overflow:hidden;
+}
+
+.side-ad{
+  position:sticky;
+  top:100px;
+}
+
+@media(max-width:768px){
+
+  .side-ad{
+    display:none;
+  }
+
+  .top-ad iframe{
+    width:100% !important;
+    max-width:100%;
+  }
+
+}
