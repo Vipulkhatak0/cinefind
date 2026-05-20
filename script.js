@@ -411,13 +411,19 @@ function watchNow() {
 
   if (!currentItem) return;
 
-  const adLink = "https://1xbet.com"; // YOUR AD LINK
+  const adLinks = [
+    "https:https://www.effectivecpmnetwork.com/bjmg4vv6?key=a5bd89c5973a77f8b215f1aaff2f2087",
+    "https:",
+    "https://www.effectivecpmnetwork.com/link3",
+    "https://www.effectivecpmnetwork.com/link4"
+  ];
 
-  // Create Ad Screen
+  // Random ad
+  const adLink = adLinks[Math.floor(Math.random() * adLinks.length)];
+
   const adScreen = document.createElement("div");
 
   adScreen.innerHTML = `
-  
     <div id="fullAdScreen">
 
       <iframe 
@@ -431,7 +437,6 @@ function watchNow() {
       </div>
 
     </div>
-
   `;
 
   document.body.appendChild(adScreen);
@@ -450,26 +455,17 @@ function watchNow() {
 
       clearInterval(counter);
 
-      // Remove Ads
       document.getElementById("fullAdScreen").remove();
 
-      // OPEN MOVIE
       if(currentItem.watchLink){
-
         window.location.href = currentItem.watchLink;
-
       } else {
-
         showToast("No movie link found");
-
       }
 
     }
 
   },1000);
-
-
-
 
 }
 // ===== THEME =====
